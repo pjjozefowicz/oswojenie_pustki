@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Oswojenie Pustki</title>
+    <script src="vue.min.js"></script>
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+  <div id="app">
+    <div v-if="showMenu">
+      <h2>OSWOJENIE PUSTKI</h2>
+      <p>STWÓRZ SWÓJ ŚWIAT:</p>
+      <p>WYBIERZ DWA SCENARIUSZE:</p>
+      <ol>
+        <li>RURALISTYCZNY</li>
+        <li>POSTPANDEMICZNY</li>
+        <li>WYTWÓRCZY</li>
+        <li>HEDONISTYCZNY</li>
+        <li>POSTHUMANISTYCZNY</li>
+      </ol>
+      <div>
+        <span>>{{input}}</span>
+      </div>
+      <p v-if="error">Błąd! Niepoprawne dane wejściowe...</p>
+      <input v-model="input" class="no-outline" onblur="this.focus()" autofocus v-on:keyup="validateInput" spellcheck="false">
+    </div>
+    <div v-else>
+      <div v-if="showGif">
+        <div class="imgbox">
+          <img class="center-fit" alt="loading" v-bind:src="gifPath">
+        </div>
+      </div>
+      <div v-show="!showGif">
+        <div class="imgbox" style="margin-top: 128px;">
+          <img class="center-fit" alt="image" v-bind:src="pathToImg">
+        </div>
+        <br><br>
+        <span id="bottom-left">Naciśnij enter aby wrócić...</span>
+      </div>
+      <input class="no-outline" onblur="this.focus()" autofocus v-on:keyup="reset" spellcheck="false">
+    </div>
+  </div>
+
+<script src="app.js"></script>
+</body>
+</html>
